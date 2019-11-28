@@ -11,11 +11,12 @@ layout: dualog
         <div class="row">
 
           {% for prototype in site.prototypes %}
+            {% if prototype.alpha %}{% continue %}{% endif %}
             <div class="col-lg-4 mb-6">
               <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
                 <div class="card-body flex-fill">
                   <div class="p-0 m-0 d-flex">
-                    <img class="serviceicon-img mr-4" src="{{prototype.image| replace: "$site_url$", site.url}}" alt="Garage TinyTracker">
+                    <img class="serviceicon-img mr-4" src="{{prototype.image| replace: "$site_url$", site.url}}" alt="{{prototype.title}}">
                     <div>
                       <h5 class="text-darkblue m-0">{{prototype.title}}</h5>
                       <p>{{prototype.description}}</p>
@@ -29,6 +30,27 @@ layout: dualog
             </div>
           {% endfor %}
 
+          {% for prototype in site.prototypes %}
+            {% if prototype.alpha != true %}{% continue %}{% endif %}
+            <div class="col-lg-4 mb-6">
+              <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
+                <div class="card-body flex-fill">
+                  <div class="p-0 m-0 d-flex">
+                    <img class="serviceicon-img mr-4" src="{{prototype.image| replace: "$site_url$", site.url}}" alt="{{prototype.title}}">
+                    <div>
+                      <h5 class="text-darkblue m-0">Alpha: {{prototype.title}}</h5>
+                      <p>{{prototype.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer pt-0" style="background:#f8f8f8;">
+                  <a class="btn btn-round btn-primary float-right" href="{{site.url}}{{prototype.url}}" title="Sneak peek">Sneak peek!</a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+
+            
           {% assign last_line = site.prototypes.size | modulo: 3 %}
           {% assign missing = 3 | minus: last_line %}
           {% if site.prototypes.size < 4 %}

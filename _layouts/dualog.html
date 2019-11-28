@@ -52,6 +52,7 @@
               <a class="nav-link menu-head" href="{{site.url}}/prototypes.html" title="Prototypes">Prototypes</a>
               <nav class="nav py-4 px-4">
                 {% for prototype in site.prototypes %}
+                  {% if prototype.alpha %}{% continue %}{% endif %}
                   <a class="nav-link" href="{{site.url}}{{prototype.url}}" title="{{prototype.title}}">{{prototype.title}}</a>
                 {% endfor %}
               </nav>

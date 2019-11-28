@@ -34,16 +34,31 @@ layout: dualog
               
         </div>
         <div class="col-lg-8">
-          <h1 class="display-4">{{ page.title }}</h1>
-
+          {% if page.alpha %}
+            <h1 class="display-4">Alpha: {{ page.title }}</h1>
+          {% else %}
+            <h1 class="display-4">{{ page.title }}</h1>
+          {% endif %}
+          
           <p class="lead mt-5 mb-6 fw-500">
+            This is an alpha version prototype - not yet ready for
+            test driving. However we can notify you when this
+            prototype gets off the floor, and we would already now
+            like to invite you to take a sneak peek at how it's built!
+          </p>
+
+          <p>
             {{page.description}}
           </p>
           
           {{ content }}
 
           <br>
-          <h3>Take this prototype for a test drive!</h3>
+          {% if page.alpha %}
+            <h3>I'm interested in this project, tell me more!</h3>
+          {% else %}
+            <h3>Take this prototype for a test drive!</h3>
+          {% endif %}
           <form novalidate="" accept-charset="UTF-8" action="https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/5540783/93301606-4d44-444e-9fd3-1b74be2cddaa" enctype="multipart/form-data" id="hsForm_93301606-4d44-444e-9fd3-1b74be2cddaa_4441" method="POST" class="hs-form stacked hs-custom-form hs-form-private hsForm_93301606-4d44-444e-9fd3-1b74be2cddaa hs-form-93301606-4d44-444e-9fd3-1b74be2cddaa hs-form-93301606-4d44-444e-9fd3-1b74be2cddaa_5807a5d6-28c9-4e16-b07d-42be2e08b154 hs-form-93301606-4d44-444e-9fd3-1b74be2cddaa_3a492a14-c339-4b30-ad86-88fb2b6f0397" data-form-id="93301606-4d44-444e-9fd3-1b74be2cddaa" data-portal-id="5540783" target="target_iframe_93301606-4d44-444e-9fd3-1b74be2cddaa_4441" data-reactid=".hbspt-forms-0">
             <fieldset class="form-columns-2" data-reactid=".hbspt-forms-0.1:$0">
               <div class="hs_firstname hs-firstname hs-fieldtype-text field hs-form-field" data-reactid=".hbspt-forms-0.1:$0.1:$firstname">
@@ -814,7 +829,11 @@ layout: dualog
               <div class="hs-field-desc" style="display:none;" data-reactid=".hbspt-forms-0.5.0">
               </div>
               <div class="actions" data-reactid=".hbspt-forms-0.5.1">
-                <input type="submit" value="Wrooom" class="hs-button primary large" data-reactid=".hbspt-forms-0.5.1.0">
+                {% if page.alpha %}
+                  <input type="submit" value="Tell me more!" class="hs-button primary large" data-reactid=".hbspt-forms-0.5.1.0">
+                {% else %}
+                  <input type="submit" value="Wrooom" class="hs-button primary large" data-reactid=".hbspt-forms-0.5.1.0">
+                {% endif %}
               </div>
             </div>
             <noscript data-reactid=".hbspt-forms-0.6">
