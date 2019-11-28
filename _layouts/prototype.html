@@ -55,7 +55,11 @@ layout: dualog
           
           {{ content }}
 
-          <br>
+          {% if page.github %}
+            <a class="btn btn-sm btn-round btn-primary float-right" href="{{page.github}}" title="View on GitHub"><i class="fab fa-github" aria-hidden="true"></i> View on GitHub</a>
+          {% endif %}
+            
+          <br style="clear: both;">
           {% if page.alpha %}
             <h3>I'm interested in this project, tell me more!</h3>
           {% else %}
