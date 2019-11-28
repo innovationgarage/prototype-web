@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="assets/page.min.css" rel="stylesheet">
-    <link href="assets/style.min.css" rel="stylesheet">
-    <link href="assets/style_v2.min.css" rel="stylesheet">
-    <link href="assets/module_9819108302_Dualog19__modules_Services_page_module.min.css" rel="stylesheet">
-    <link href="assets/form.css" rel="stylesheet">
+    <link href="{{site.url}}/assets/page.min.css" rel="stylesheet">
+    <link href="{{site.url}}/assets/style.min.css" rel="stylesheet">
+    <link href="{{site.url}}/assets/style_v2.min.css" rel="stylesheet">
+    <link href="{{site.url}}/assets/module_9819108302_Dualog19__modules_Services_page_module.min.css" rel="stylesheet">
+    <link href="{{site.url}}/assets/form.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/3acd8974c7.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,700,800" rel="stylesheet">
 
@@ -17,7 +17,7 @@
     <style>
       body {
         background-color: rgba(238, 238, 238, 0.9) !important;
-        background-image: url('garagedoor.jpg');
+        background-image: url('{{site.url}}/assets/{{page.background}}');
         background-blend-mode: color;
         background-repeat: no-repeat;
         background-size: cover;
@@ -32,7 +32,7 @@
       <div class="container small-3">
         <nav class="nav ml-auto">
           <a class="nav-link" href="mailto:help@innovationgarage.no" title="Help!" target="_blank">Help!</a>
-          <a class="nav-link pr-0" href="howitworks.html" title="How it works">How it works</a>
+          <a class="nav-link pr-0" href="{{site.url}}/howitworks.html" title="How it works">How it works</a>
         </nav>
       </div>
     </section>
@@ -41,35 +41,40 @@
       <div class="container">
         <div class="navbar-left">
           <button class="navbar-toggler" type="button">☰</button>
-          <a class="navbar-brand" href="index.html" title="Dualog frontpage">
-            <img class="logo" src="logo.png" alt="Dualog logo">
+          <a class="navbar-brand" href="{{site.url}}/index.html" title="Dualog frontpage">
+            <img class="logo" src="{{site.url}}/assets/logo.png" alt="Dualog logo">
           </a>
         </div>
 
         <section class="navbar-mobile">
           <ul class="nav nav-navbar">
             <li class="nav-item">
-              <a class="nav-link menu-head" href="prototypes.html" title="Prototypes">Prototypes</a>
+              <a class="nav-link menu-head" href="{{site.url}}/prototypes.html" title="Prototypes">Prototypes</a>
               <nav class="nav py-4 px-4">
-                <a class="nav-link" href="tinytracker.html" title="TinyTracker">TinyTracker</a>
-                <a class="nav-link" href="cloudberryvpn.html" title="CloudberryVPN">CloudberryVPN</a>
+                {% for prototype in site.prototypes %}
+                  <a class="nav-link" href="{{prototype.url}}" title="{{prototype.title}}">{{prototype.title}}</a>
+                {% endfor %}
               </nav>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link menu-head" href="foss-howto.html" title="Open source">Open source</a>
+              <a class="nav-link menu-head" href="{{site.url}}/foss-howto.html" title="Open source">Open source</a>
               <nav class="nav py-4 px-4">
-                <a class="nav-link" href="foss-why.html" title="Why Open Source">Why Open Source?</a>
-                <a class="nav-link" href="foss-howto.html" title="How to use our code">How to use our code</a>
+                <a class="nav-link" href="{{site.url}}/foss-why.html" title="Why Open Source">Why Open Source?</a>
+                <a class="nav-link" href="{{site.url}}/foss-howto.html" title="How to use our code">How to use our code</a>
+                <br />
+                {% for component in site.components %}
+                  <a class="nav-link" href="{{component.url}}" title="{{component.title}}">{{component.title}}</a>
+                {% endfor %}                
               </nav>
             </li>
             
             <li class="nav-item">
-              <a class="nav-link menu-head" href="about.html" title="About us">About us</a>
+              <a class="nav-link menu-head" href="{{site.url}}/about.html" title="About us">About us</a>
               <nav class="nav nav-adjust py-4 px-4 ">
-                <a class="nav-link" href="about.html" title="About us">About the Innovation Garage</a>
+                <a class="nav-link" href="{{site.url}}/about.html" title="About us">About the Innovation Garage</a>
                 <a class="nav-link" href="https://www.dualog.com/about-us" title="About dualog">About dualog</a>
-                <a class="nav-link" href="garage-why.html" title="Why a garage?">Why a garage?</a>
+                <a class="nav-link" href="{{site.url}}/garage-why.html" title="Why a garage?">Why a garage?</a>
               </nav>
             </li>
 
@@ -91,7 +96,7 @@
             
             <li class="nav-item nav-btn">
               <a class="btn btn-sm btn-round btn-outline-primary" href="mailto:help@innovationgarage.no" title="Contact">Contact</a>
-              <a class="btn btn-sm btn-round btn-primary" href="signup.html" title="Sign up">Sign up!</a>
+              <a class="btn btn-sm btn-round btn-primary" href="{{site.url}}/signup.html" title="Sign up">Sign up!</a>
             </li>
           </ul>
         </section>
@@ -107,8 +112,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-    <script src="assets/page.js"></script>
-    <script src="assets/scripts.js"></script>
+    <script src="{{site.url}}/assets/page.js"></script>
+    <script src="{{site.url}}/assets/scripts.js"></script>
     
   </body>
 </html>

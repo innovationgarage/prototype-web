@@ -9,73 +9,38 @@ layout: dualog
         <h1>Prototypes</h1>
         
         <div class="row">
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div class="card-body flex-fill">
-                <div class="p-0 m-0 d-flex">
-                  <img class="serviceicon-img mr-4" src="https://innovationgarage.github.io/TinyTracker.png" alt="Garage TinyTracker">
-                  <div>
-                    <h5 class="text-darkblue m-0">TinyTracker</h5>
-                    <p>Garage TinyTracker is a device that can be used to relay
-                      AIS messages from a ship, including its own
-                      position, speed etc to land using its regular
-                      (satellite) internet connection, giving land based
-                      personell the same view available on the on-board
-                      ECDIS.</p>
+
+          {% for prototype in site.prototypes %}
+            <div class="col-lg-4 mb-6">
+              <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
+                <div class="card-body flex-fill">
+                  <div class="p-0 m-0 d-flex">
+                    <img class="serviceicon-img mr-4" src="{{prototype.image| replace: "$site_url$", site.url}}" alt="Garage TinyTracker">
+                    <div>
+                      <h5 class="text-darkblue m-0">{{prototype.title}}</h5>
+                      <p>{{prototype.description}}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-footer pt-0" style="background:#f8f8f8;">
-                <a class="btn btn-round btn-primary float-right" href="tinytracker.html" title="Test drive">Test drive!</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div class="card-body flex-fill">
-                <div class="p-0 m-0 d-flex mb-3">
-                  <img class="serviceicon-img mr-4" src="cloudberry-logo.png" alt="quota_symbol">
-                  <div>
-                    <h5 class="text-darkblue m-0">CloudberryVPN</h5>
-                    <p>Garage CloudberryVPN links your on-board business
-                    network to your on-shore office network, making
-                    file-sharing, remote management etc work
-                    seamlessly. It does this across carriers and
-                    without any major modification to your network
-                    setup either on land or on the ship.</p>
-                  </div>
+                <div class="card-footer pt-0" style="background:#f8f8f8;">
+                  <a class="btn btn-round btn-primary float-right" href="{{prototype.url}}" title="Test drive">Test drive!</a>
                 </div>
               </div>
-              <div class="card-footer pt-0" style="background:#f8f8f8;">
-                <a class="btn btn-round btn-primary float-right" href="cloudberryvpn.html" title="Test drive">Test drive!</a>
+            </div>
+          {% endfor %}
+
+          {% assign last_line = site.prototypes.size | modulo: 3 %}
+          {% assign missing = 3 | minus: last_line %}
+          {% if site.prototypes.size < 4 %}
+            {% assign missing = missing | plus: 3 %}
+          {% endif %}
+          {% for i in (1..missing) %}
+            <div class="col-lg-4 mb-6">
+              <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
+                <div style="height:100pt;"></div>
               </div>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
+            </div>            
+          {% endfor %}
           
         </div>
       </div>
@@ -87,70 +52,37 @@ layout: dualog
         <h1>Open Source components</h1>
 
         <div class="row">
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div class="card-body flex-fill">
-                <div class="p-0 m-0 d-flex">
-                  <img class="serviceicon-img mr-4" src="https://innovationgarage.github.io/TTyGO/images/screenshot-menu.jpg" alt="Garage TTyGO">
-                  <div>
-                    <h5 class="text-darkblue m-0">TTyGO</h5>
-                    <p>TTyGO turns an Arduino into a simple VT220
-                    compatible serial terminal with some XTerm
-                    extensions with optional UTF-8 support. It uses
-                    the U8g2lib graphical library, so it is compatible
-                    with a lot of displays.</p>
+          {% for component in site.components %}
+            <div class="col-lg-4 mb-6">
+              <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
+                <div class="card-body flex-fill">
+                  <div class="p-0 m-0 d-flex">
+                    <img class="serviceicon-img mr-4" src="{{component.image}}" alt="Garage TinyTracker">
+                    <div>
+                      <h5 class="text-darkblue m-0">{{component.title}}</h5>
+                      <p>{{component.description}}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="card-footer pt-0" style="background:#f8f8f8;">
-                <a class="btn btn-round btn-primary float-right" href="https://innovationgarage.github.io/TTyGO/" title="Explore">Explore!</a>
-              </div>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div class="card-body flex-fill">
-                <div class="p-0 m-0 d-flex mb-3">
-                  <img class="serviceicon-img mr-4" src="https://raw.githubusercontent.com/innovationgarage/gributils/master/docs/gribfile.png" alt="quota_symbol">
-                  <div>
-                    <h5 class="text-darkblue m-0">GribUtils</h5>
-                    <p>Gributils is a set of utilities on top of
-                    pygrib for manipulating and indexing a large
-                    (historical) set of weather predictions (model
-                    output) in the gribfile format.</p>
-                  </div>
+                <div class="card-footer pt-0" style="background:#f8f8f8;">
+                  <a class="btn btn-round btn-primary float-right" href="{{component.site_url}}" title="Explore">Explore!</a>
                 </div>
               </div>
-              <div class="card-footer pt-0" style="background:#f8f8f8;">
-                <a class="btn btn-round btn-primary float-right" href="https://innovationgarage.github.io/gributils" title="Explore">Explore!</a>
+            </div>
+          {% endfor %}
+
+          {% assign last_line = site.components.size | modulo: 3 %}
+          {% assign missing = 3 | minus: last_line %}
+          {% if site.components.size < 4 %}
+            {% assign missing = missing | plus: 3 %}
+          {% endif %}
+          {% for i in (1..missing) %}
+            <div class="col-lg-4 mb-6">
+              <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
+                <div style="height:100pt;"></div>
               </div>
-            </div>
-          </div>
-          
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 mb-6">
-            <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
-              <div style="height:100pt;"></div>
-            </div>
-          </div>
+            </div>            
+          {% endfor %}
           
         </div>
         

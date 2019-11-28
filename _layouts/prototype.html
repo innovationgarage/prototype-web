@@ -6,7 +6,7 @@ layout: dualog
     <div class="container">
       <div class="row">
         <div class="col-lg-4">
-          <img class="mr-4" src="{{ page.image }}" alt="{{ page.title }}" style="width:300pt;">
+          <img class="mr-4" src="{{ page.image| replace: "$site_url$", site.url }}" alt="{{ page.title }}" style="width:300pt;">
 
           <br />
           <br />
@@ -35,6 +35,10 @@ layout: dualog
         </div>
         <div class="col-lg-8">
           <h1 class="display-4">{{ page.title }}</h1>
+
+          <p class="lead mt-5 mb-6 fw-500">
+            {{page.description}}
+          </p>
           
           {{ content }}
 
