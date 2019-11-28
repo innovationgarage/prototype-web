@@ -79,7 +79,7 @@ layout: dualog
               <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
                 <div class="card-body flex-fill">
                   <div class="p-0 m-0 d-flex">
-                    <img class="serviceicon-img mr-4" src="{{component.image}}" alt="Garage TinyTracker">
+                    <img class="serviceicon-img mr-4" src="{{component.image| replace: "$site_url$", site.url}}" alt="{{component.title}}">
                     <div>
                       <h5 class="text-darkblue m-0">{{component.title}}</h5>
                       <p>{{component.description}}</p>
