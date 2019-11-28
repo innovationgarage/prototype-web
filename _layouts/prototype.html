@@ -36,20 +36,22 @@ layout: dualog
         <div class="col-lg-8">
           {% if page.alpha %}
             <h1 class="display-4">Alpha: {{ page.title }}</h1>
+            <p class="lead mt-5 mb-6 fw-500">
+              This is an alpha version prototype - not yet ready for
+              test driving. However we can notify you when this
+              prototype gets off the floor, and we would already now
+              like to invite you to take a sneak peek at how it's built!
+            </p>
+            <p>
+              {{page.description}}
+            </p>
           {% else %}
             <h1 class="display-4">{{ page.title }}</h1>
-          {% endif %}
-          
-          <p class="lead mt-5 mb-6 fw-500">
-            This is an alpha version prototype - not yet ready for
-            test driving. However we can notify you when this
-            prototype gets off the floor, and we would already now
-            like to invite you to take a sneak peek at how it's built!
-          </p>
 
-          <p>
-            {{page.description}}
-          </p>
+            <p class="lead mt-5 mb-6 fw-500">
+              {{page.description}}
+            </p>
+          {% endif %}
           
           {{ content }}
 
