@@ -52,7 +52,7 @@
               <a class="nav-link menu-head" href="{{site.url}}/prototypes.html" title="Prototypes">Prototypes</a>
               <nav class="nav py-4 px-4">
                 {% for prototype in site.prototypes %}
-                  <a class="nav-link" href="{{prototype.url}}" title="{{prototype.title}}">{{prototype.title}}</a>
+                  <a class="nav-link" href="{{site.url}}{{prototype.url}}" title="{{prototype.title}}">{{prototype.title}}</a>
                 {% endfor %}
               </nav>
             </li>
@@ -64,7 +64,7 @@
                 <a class="nav-link" href="{{site.url}}/foss-howto.html" title="How to use our code">How to use our code</a>
                 <br />
                 {% for component in site.components %}
-                  <a class="nav-link" href="{{component.url}}" title="{{component.title}}">{{component.title}}</a>
+                  <a class="nav-link" href="{{site.url}}{{component.url}}" title="{{component.title}}">{{component.title}}</a>
                 {% endfor %}                
               </nav>
             </li>

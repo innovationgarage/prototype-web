@@ -19,4 +19,5 @@ defaults:
       path: "" # an empty string here means all files in the project
     values:
       background: "garage.jpg"
-baseurl: /prototype-web
+url: https://innovationgarage.github.io/prototype-web
+
