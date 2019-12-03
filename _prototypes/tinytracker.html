@@ -28,3 +28,18 @@ github: https://github.com/innovationgarage/ElCheapoAIS-nmea
 <img src="{{site.url}}/assets/tinytracker-mapview.png" />
 <br />
 <br />
+<h5>Data validation</h5>
+The data collected from TinyTracker will be validated for consistency by our on-shore pipeline:
+
+<ul>
+  <li>Does any self-reported points and points reported by nearby vessels disagree about location at a certain time?</li>
+  <li>Does two consecutive points imply an unrealistic speed by their times and positions?
+    <ul>
+      <li>When taking only self-reported points into account?</li>
+      <li>When taking only points reported by nearby vessels into account?</li>
+      <li>When taking all points into account?</li>
+    </ul>
+  </li>
+  <li>Is the distance between two vessels that can see each other greater than realistic reception ranges?</li>
+</ul>
+<br />
