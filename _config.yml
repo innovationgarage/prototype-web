@@ -20,5 +20,6 @@ defaults:
     values:
       background: "garage.jpg"
       alpha: false
+      failed: false
 url: https://innovationgarage.github.io/prototype-web
 

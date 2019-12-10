@@ -12,6 +12,7 @@ layout: dualog
 
           {% for prototype in site.prototypes %}
             {% if prototype.alpha %}{% continue %}{% endif %}
+            {% if prototype.failed %}{% continue %}{% endif %}
             <div class="col-lg-4 mb-6">
               <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
                 <div class="card-body flex-fill">
@@ -24,18 +25,19 @@ layout: dualog
                   </div>
                 </div>
                 <div class="card-footer pt-0" style="background:#f8f8f8;">
-                  <a class="btn btn-round btn-primary float-right" href="{{site.url}}{{prototype.url}}" title="Test drive">Test drive!</a>
+                  <a class="btn btn-round btn-primary float-right" href="{{site.url}}{{prototype.url}}" title="Test drive"><i class="fas fa-car"></i> Test drive!</a>
                 </div>
               </div>
             </div>
           {% endfor %}
 
           {% for prototype in site.prototypes %}
+            {% if prototype.failed %}{% continue %}{% endif %}
             {% if prototype.alpha != true %}{% continue %}{% endif %}
             <div class="col-lg-4 mb-6">
               <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
                 <div class="card-body flex-fill">
-                  <div class="p-0 m-0 d-flex">
+                 <div class="p-0 m-0 d-flex">
                     <img class="serviceicon-img mr-4" src="{{prototype.image| replace: "$site_url$", site.url}}" alt="{{prototype.title}}">
                     <div>
                       <h5 class="text-darkblue m-0">Alpha: {{prototype.title}}</h5>
@@ -44,12 +46,36 @@ layout: dualog
                   </div>
                 </div>
                 <div class="card-footer pt-0" style="background:#f8f8f8;">
-                  <a class="btn btn-round btn-primary float-right" href="{{site.url}}{{prototype.url}}" title="Sneak peek">Sneak peek!</a>
+                  <a class="btn btn-round btn-primary float-right" href="{{site.url}}{{prototype.url}}" title="Sneak peek"><i class="fas fa-search"></i>
+
+ Sneak peek!</a>
                 </div>
               </div>
             </div>
           {% endfor %}
 
+          {% for prototype in site.prototypes %}
+            {% if prototype.failed != true %}{% continue %}{% endif %}
+            <div class="col-lg-4 mb-6">
+              <div class="card p-4 h-100" style="background:#f8f8f8; border-radius:0.5rem;">
+                <div class="card-body flex-fill">
+                  <div class="p-0 m-0 d-flex">
+                    <img class="serviceicon-img mr-4" src="{{prototype.image| replace: "$site_url$", site.url}}" alt="{{prototype.title}}">
+                    <div>
+                      <h5 class="text-darkblue m-0">Discontinued: {{prototype.title}}</h5>
+                      <p>{{prototype.description}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer pt-0" style="background:#f8f8f8;">
+                  {% if prototype.github %}
+                    <a class="btn btn-round btn-primary float-right" href="{{prototype.github}}" title="View on GitHub"><i class="fab fa-github" aria-hidden="true"></i> View on GitHub</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+            
 <!--            
           {% assign last_line = site.prototypes.size | modulo: 3 %}
           {% assign missing = 3 | minus: last_line %}
@@ -88,7 +114,7 @@ layout: dualog
                   </div>
                 </div>
                 <div class="card-footer pt-0" style="background:#f8f8f8;">
-                  <a class="btn btn-round btn-primary float-right" href="{{component.site_url}}" title="Explore">Explore!</a>
+                  <a class="btn btn-round btn-primary float-right" href="{{component.site_url}}" title="Explore"><i class="fab fa-github" aria-hidden="true"></i> Explore!</a>
                 </div>
               </div>
             </div>
